@@ -1,0 +1,87 @@
+Source: plexus-containers
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Damien Raude-Morvan <drazzib@debian.org>
+Build-Depends:
+ debhelper (>= 10),
+ default-jdk,
+ junit4,
+ libasm-java (>= 7.0),
+ libcommons-cli-java,
+ libguava-java,
+ libjdom2-java,
+ libmaven3-core-java,
+ libplexus-classworlds-java (>= 2.5.2),
+ libplexus-cli-java,
+ libplexus-utils2-java,
+ libqdox2-java,
+ libxbean-reflect-java,
+ maven-debian-helper
+Standards-Version: 4.5.0
+Vcs-Git: https://salsa.debian.org/java-team/plexus-containers.git
+Vcs-Browser: https://salsa.debian.org/java-team/plexus-containers
+Homepage: https://github.com/codehaus-plexus/plexus-containers
+
+Package: libplexus-container-default-java
+Architecture: all
+Depends:
+ libguava-java,
+ libplexus-classworlds-java (>= 2.5.2),
+ libplexus-utils2-java,
+ libxbean-reflect-java,
+ ${misc:Depends}
+Breaks: libplexus-containers1.5-java (<< 1.6-2~), libplexus-containers-java, libplexus-container-default1.5-java (<< 1.7.1-7~)
+Replaces: libplexus-containers1.5-java (<< 1.6-2~), libplexus-containers-java, libplexus-container-default1.5-java (<< 1.7.1-7~)
+Description: Plexus Inversion-of-control Container
+ The Plexus project provides a full software stack for creating and executing
+ software projects. Based on the Plexus container, the applications can
+ utilise component-oriented programming to build modular, reusable components
+ that can easily be assembled and reused.
+ .
+ This package contains the plexus-container-default module.
+
+Package: libplexus-container-default1.5-java
+Architecture: all
+Section: oldlibs
+Depends: ${misc:Depends}, libplexus-container-default-java (>= 1.7.1-7~)
+Description: Plexus Inversion-of-control Container (transitional package)
+ The Plexus project provides a full software stack for creating and executing
+ software projects. Based on the Plexus container, the applications can
+ utilise component-oriented programming to build modular, reusable components
+ that can easily be assembled and reused.
+ .
+ This is a transitional package, please use libplexus-container-default-java
+ instead.
+
+Package: libplexus-component-annotations-java
+Architecture: all
+Depends: ${misc:Depends}
+Breaks: libplexus-containers1.5-java (<< 1.6-2~), libplexus-containers-java
+Replaces: libplexus-containers1.5-java (<< 1.6-2~), libplexus-containers-java
+Description: Plexus Component Annotations
+ Plexus Component Java 5 annotations, to describe Plexus components
+ properties in java sources with standard annotations instead of javadoc
+ annotations.
+
+Package: libplexus-component-metadata-java
+Architecture: all
+Depends:
+ libasm-java (>= 7.0),
+ libcommons-cli-java,
+ libjdom2-java,
+ libmaven3-core-java,
+ libplexus-cli-java,
+ libplexus-component-annotations-java (= ${source:Version}),
+ libplexus-container-default-java (= ${source:Version}),
+ libqdox2-java,
+ ${misc:Depends}
+Breaks: libplexus-containers1.5-java (<< 1.6-2~)
+Replaces: libplexus-containers1.5-java (<< 1.6-2~)
+Description: Component Metadata Maven plugin for Plexus
+ The Plexus project provides a full software stack for creating and executing
+ software projects. Based on the Plexus container, the applications can
+ utilise component-oriented programming to build modular, reusable components
+ that can easily be assembled and reused.
+ .
+ This package provides the Maven plugin generating the component metadata.

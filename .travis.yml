@@ -1,0 +1,22 @@
+language: java
+jdk:
+  - openjdk7
+  - oraclejdk8
+  - openjdk11
+
+dist: trusty
+
+# No need for preliminary install step.
+install: true
+#
+# Run all integration tests.
+script: 
+  - "mvn --show-version --errors --batch-mode clean verify -Prun-its"
+#
+cache:
+    directories:
+    - $HOME/.m2
+branches:
+    except:
+        - gh-pages
+

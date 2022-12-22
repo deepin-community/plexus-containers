@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- $Id$ -->
+<component-set>
+  <components>
+    <component>
+      <role>org.codehaus.plexus.metadata.gleaner.SourceComponentGleaner</role>
+      <role-hint>qdox</role-hint>
+      <implementation>org.codehaus.plexus.metadata.gleaner.QDoxComponentGleaner</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.ComponentDescriptorCreator</role>
+      <implementation>org.codehaus.plexus.metadata.DefaultComponentDescriptorCreator</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.ComponentDescriptorExtractor</role>
+      <role-hint>class</role-hint>
+      <implementation>org.codehaus.plexus.metadata.ClassComponentDescriptorExtractor</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.ComponentDescriptorExtractor</role>
+      <role-hint>source</role-hint>
+      <implementation>org.codehaus.plexus.metadata.SourceComponentDescriptorExtractor</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.ComponentDescriptorWriter</role>
+      <implementation>org.codehaus.plexus.metadata.DefaultComponentDescriptorWriter</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.merge.Merger</role>
+      <role-hint>componentsXml</role-hint>
+      <implementation>org.codehaus.plexus.metadata.merge.ComponentsXmlMerger
+      </implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.merge.Merger</role>
+      <role-hint>plexusXml</role-hint>
+      <implementation>org.codehaus.plexus.metadata.merge.PlexusXmlMerger</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.gleaner.ClassComponentGleaner</role>
+      <role-hint>annotation</role-hint>
+      <implementation>org.codehaus.plexus.metadata.gleaner.AnnotationComponentGleaner</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.MetadataGenerator</role>
+      <implementation>org.codehaus.plexus.metadata.DefaultMetadataGenerator</implementation>
+      <requirements>
+        <requirement>
+          <role>org.codehaus.plexus.metadata.merge.Merger</role>
+          <role-hint>componentsXml</role-hint>
+        </requirement>
+        <requirement>
+          <role>org.codehaus.plexus.metadata.ComponentDescriptorExtractor</role>
+          <field-name>extractorMap</field-name>
+        </requirement>
+      </requirements>
+    </component>
+  </components>
+</component-set>
